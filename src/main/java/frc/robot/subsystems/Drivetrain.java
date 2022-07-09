@@ -8,19 +8,26 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
 public class Drivetrain extends SubsystemBase {
     // create seperate motor controllers on left and right
-    WPI_TalonFX m_frontLeft = new WPI_TalonFX(Constants.Drivetrain.frontLeft);
-    WPI_TalonFX m_backLeft = new WPI_TalonFX(Constants.Drivetrain.backLeft);
-    WPI_TalonFX m_frontRight = new WPI_TalonFX(Constants.Drivetrain.frontRight);
-    WPI_TalonFX m_backRight = new WPI_TalonFX(Constants.Drivetrain.backRight);
+    private final WPI_TalonFX m_frontLeft = new WPI_TalonFX(Constants.Drivetrain.frontLeft_id);
+    private final WPI_TalonFX m_backLeft = new WPI_TalonFX(Constants.Drivetrain.backLeft_id);
+    private final WPI_TalonFX m_frontRight = new WPI_TalonFX(Constants.Drivetrain.frontRight_id);
+    private final WPI_TalonFX m_backRight = new WPI_TalonFX(Constants.Drivetrain.backRight_id);
     // create groups out of these motor controllers (init can)
 
-    MotorControllerGroup m_right = new MotorControllerGroup(m_backRight, m_frontRight);
-    MotorControllerGroup m_left = new MotorControllerGroup(m_backLeft, m_frontLeft);
+    private MotorControllerGroup m_right = new MotorControllerGroup(m_backRight, m_frontRight);
+    private MotorControllerGroup m_left = new MotorControllerGroup(m_backLeft, m_frontLeft);
 
     // create a method to set percentage
-    public void drive(double right, double left){
-        m_right.set(right); 
-        m_left.set(left);
+    public Drivetrain(){
+        m_frontLeft.setNeutralMode(NeutralMode.Coast);
+        m_backLeft.setNeutralMode(NeutralMode.Coast);
+        m_frontRight.setNeutralMode(NeutralMode.Coast);
+        m_backRight.setNeutralMode(NeutralMode.Coast);
+
+    }
+    public void tankDrive(double rightSpeed, double leftSpeed){
+        m_right.set(rightSpeed); 
+        m_left.set(leftSpeed);
     }
 
 }

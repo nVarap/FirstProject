@@ -4,8 +4,6 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
-
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -16,10 +14,10 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
  */
 public final class Constants {
     public static final class Drivetrain {
-    public static final int frontLeft = 11;
-    public static final int backLeft = 12;
-    public static final int frontRight = 13;
-    public static final int backRight = 14;
-}
+        public static final int frontLeft_id = 11;
+        public static final int backLeft_id = 12;
+        public static final int frontRight_id = 13;
+        public static final int backRight_id = 14;
+    }
 
 }

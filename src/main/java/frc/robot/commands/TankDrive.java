@@ -1,25 +1,37 @@
+
 package frc.robot.commands;
+
+import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
 
-public class Forward extends CommandBase {
-    private Drivetrain m_drivetrain;
+import frc.robot.subsystems.Drivetrain;
 
-    public Forward(Drivetrain drivetrain) {
+public class TankDrive extends CommandBase {
+
+    private Drivetrain m_drivetrain;
+    private DoubleSupplier right;
+    private DoubleSupplier left;
+
+    public TankDrive(Drivetrain drivetrain, DoubleSupplier right, DoubleSupplier left) {
+
         this.m_drivetrain = drivetrain;
-        addRequirements(drivetrain);
+        this.right = right;
+        this.left = left;
+
+        addRequirements(drivetrain); // varalu know what this is 👍👍👍👍
     }
 
+    // Called when the command is initially scheduled.
     @Override
     public void initialize() {
-        m_drivetrain.tankDrive(0, 0);
     }
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        m_drivetrain.tankDrive(0.5, 0.5);
+        m_drivetrain.tankDrive( right.getAsDouble(), left.getAsDouble());
     }
 
     // Called once the command ends or is interrupted.
@@ -32,4 +44,5 @@ public class Forward extends CommandBase {
     public boolean isFinished() {
         return false;
     }
+
 }
