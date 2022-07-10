@@ -20,4 +20,7 @@ public final class Constants {
         public static final int backRight_id = 14;
     }
 
+    public static final class Elevator{
+        public static final int elevator_id = 25;
+    }
 }
