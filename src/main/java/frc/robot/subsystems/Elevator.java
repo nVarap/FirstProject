@@ -15,9 +15,11 @@ public class Elevator extends SubsystemBase {
     }
     public void extend(){
         m_elevator.set(0.5);
+        m_elevator.stopMotor();
     }
     public void retract(){
         m_elevator.set(-0.5);
+        m_elevator.stopMotor();
     }
 
     public void stopElevator(){
